@@ -83,7 +83,11 @@ $this->title = $model->id_pregunta;
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <?php if($respuesta->isNewRecord){ ?>
+                    <h4 class="modal-title">Crear respuesta</h4>
+                <?php }else{ ?>
+                    <h4 class="modal-title">Actualizar respuesta</h4>
+                <?php } ?>                
             </div>
             <div class="modal-body">
                 <?= $this->render('//respuestas/_form', [
@@ -102,12 +106,11 @@ $this->title = $model->id_pregunta;
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title">Actualizar pregunta</h4>
             </div>
             <div class="modal-body">
                 <?= $this->render('_form', [
-                    'idPreg' => $model->id_pregunta,
-                    'model' => $respuesta,
+                    'model' => $model,
                 ]) ?>
             </div>
         </div>
