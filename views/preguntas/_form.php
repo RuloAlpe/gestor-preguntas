@@ -13,7 +13,15 @@ use app\models\CatTipoPreguntas;
 
 <div class="ent-preguntas-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php if($model->isNewRecord){ 
+        $form = ActiveForm::begin([
+            'action' => ['preguntas/create']
+        ]);
+    }else{
+        $form = ActiveForm::begin([
+            'action' => ['preguntas/update?id='.$model->id_pregunta]
+        ]);
+    } ?>
 
     <?= $form->field($model, 'id_cuestionario')->dropDownList(ArrayHelper::map(CatCuestionarios::find()->where(['b_habilitado'=>1])->all(), 'id_cuestionario', 'txt_nombre'), ['prompt'=>'Seleccionar cuestionario']) ?>
 
@@ -22,7 +30,7 @@ use app\models\CatTipoPreguntas;
     <?= $form->field($model, 'txt_pregunta')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

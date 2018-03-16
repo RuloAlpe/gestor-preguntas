@@ -11,9 +11,16 @@ use yii\helpers\Url;
 
 <div class="ent-respuestas-form">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['respuestas/create']
-    ]); ?>
+    <?php if($model->isNewRecord){ 
+        $form = ActiveForm::begin([
+            'action' => ['respuestas/create']
+        ]);
+    }else{
+        $form = ActiveForm::begin([
+            'action' => ['respuestas/update?id='.$model->id_pregunta]
+        ]);
+    }
+    ?>
 
     <?= $form->field($model, 'id_pregunta')->hiddenInput(['maxlength' => true, 'value' => $idPreg])->label(false) ?>
 

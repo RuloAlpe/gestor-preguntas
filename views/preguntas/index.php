@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear pregunta', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear pregunta', ['create'], ['class' => 'btn btn-success', 'data-toggle' => 'modal', 'data-target' => '#myModal']) ?>
     </p>
 
     <?= GridView::widget([
@@ -51,4 +51,22 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <?= $this->render('_form', [
+                    'model' => $model
+                ]) ?>
+            </div>
+        </div>
+    </div>
 </div>

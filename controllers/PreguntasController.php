@@ -39,10 +39,12 @@ class PreguntasController extends Controller
     {
         $searchModel = new EntPreguntasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model = new EntPreguntas();        
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model
         ]);
     }
 

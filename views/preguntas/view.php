@@ -16,7 +16,7 @@ $this->title = $model->id_pregunta;
     <h1><?php Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id_pregunta], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Update', ['update', 'id' => $model->id_pregunta], ['class' => 'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#myModal2']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id_pregunta], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -87,6 +87,25 @@ $this->title = $model->id_pregunta;
             </div>
             <div class="modal-body">
                 <?= $this->render('//respuestas/_form', [
+                    'idPreg' => $model->id_pregunta,
+                    'model' => $respuesta,
+                ]) ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal actualizar-->
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <?= $this->render('_form', [
                     'idPreg' => $model->id_pregunta,
                     'model' => $respuesta,
                 ]) ?>
